@@ -357,13 +357,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      <div className="bg-primary text-primary-foreground p-4 rounded-lg shadow-lg mb-6 text-center">
-        <h2 className="text-2xl font-bold">Tailwind CSS v3 is working!</h2>
-        <p className="mt-2">
-          Your website is now running with stable Tailwind CSS v3.
-        </p>
-      </div>
     </>
   );
 }

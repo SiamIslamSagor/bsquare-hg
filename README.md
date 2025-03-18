@@ -1,8 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BSquare Digital Agency
+
+<div align="center">
+  <img src="./public/images/logo.png" alt="BSquare Logo" width="200" height="auto" />
+  <h3>Crafting Digital Experiences That Inspire</h3>
+</div>
+
+## About BSquare
+
+BSquare is a full-service digital agency specializing in creating beautiful interfaces and meaningful experiences that drive results. We combine creative design with innovative technology to bring your vision to life. Our team of experts works collaboratively to deliver solutions that are not only visually stunning but also strategically sound.
+
+## Our Services
+
+- **Web Design & Development**
+
+  - Custom website design
+  - Web application development
+  - E-commerce solutions
+  - Progressive Web Apps (PWAs)
+
+- **Digital Branding**
+
+  - Brand identity development
+  - Logo design
+  - Brand strategy
+  - Visual design systems
+
+- **UI/UX Design**
+
+  - User experience design
+  - Interface design
+  - Prototyping & wireframing
+  - Usability testing
+
+- **Digital Marketing**
+  - SEO optimization
+  - Content strategy
+  - Social media marketing
+  - Analytics & performance tracking
+
+## Technology Stack
+
+This project is built with modern technologies for optimal performance and developer experience:
+
+- **Framework:** [Next.js 15](https://nextjs.org/) with App Router
+- **UI Components:** [Shadcn UI](https://ui.shadcn.com/) & Custom Components
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) v3.3
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **TypeScript:** For type safety and better developer experience
+- **State Management:** React Hooks
+- **Forms:** React Hook Form with Zod validation
+- **Deployment:** Vercel (recommended)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18.17 or later
+- npm, yarn, or pnpm
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/bsquare.git
+cd bsquare
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn
+# or
+pnpm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
@@ -10,27 +85,41 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the website.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/src/app` - Next.js application pages
+- `/src/components` - Reusable UI components
+- `/src/lib` - Utility functions and custom hooks
+- `/public` - Static assets like images and fonts
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+- **Custom Animated Cursor** - Enhanced user experience
+- **Responsive Design** - Optimized for all screen sizes
+- **Dark Mode Support** - Toggle between light and dark themes
+- **Interactive UI Elements** - Magnetic buttons, animations, and microinteractions
+- **Performance Optimized** - Fast loading with Next.js and Turbopack
+- **SEO Friendly** - Built-in SEO optimizations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The design system can be customized in the `tailwind.config.mjs` file. Theme colors, typography, and other design tokens can be modified to match your brand identity.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy your BSquare website is using the [Vercel Platform](https://vercel.com/new) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contact
+
+For inquiries, please reach out to:
+
+- **Email:** info@bsquare.agency
+- **Website:** [https://bsquare.agency](https://bsquare.agency)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
