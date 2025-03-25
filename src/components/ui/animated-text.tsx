@@ -1,14 +1,12 @@
 "use client";
 
 import { useRef, useEffect, ElementType } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 
 type AnimatedTextProps = {
   text: string;
   el?: ElementType;
   className?: string;
-  once?: boolean;
-  repeatDelay?: number;
   animation?: "fade" | "slide-up" | "slide-down";
 };
 
@@ -34,37 +32,15 @@ export const AnimatedText = ({
   text,
   el: Wrapper = "span",
   className = "",
-  once = true,
-  repeatDelay = 3000,
   animation = "fade",
 }: AnimatedTextProps) => {
   const controls = useAnimation();
   const textRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(textRef, { once });
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
-
-    const show = async () => {
-      await controls.start("animate");
-
-      if (!once) {
-        timeout = setTimeout(async () => {
-          await controls.start("exit");
-          await controls.start("initial");
-          await controls.start("animate");
-        }, repeatDelay);
-      }
-    };
-
-    if (isInView) {
-      show();
-    } else {
-      controls.start("initial");
-    }
-
-    return () => clearTimeout(timeout);
-  }, [isInView, controls, once, repeatDelay]);
+    // Always animate immediately on mount
+    controls.start("animate");
+  }, [controls]);
 
   const getAnimationVariants = () => {
     return defaultAnimations[animation];

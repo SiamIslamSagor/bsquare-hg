@@ -1,16 +1,20 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: "class",
+module.exports = {
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      maxWidth: {
-        "7xl": "80rem",
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
       },
+    },
+    extend: {
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -66,17 +70,8 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: "1rem",
-        sm: "1.5rem",
-        lg: "2rem",
-      },
-    },
   },
   plugins: [
-    // Manually add animate utilities
     {
       handler: ({ addUtilities }) => {
         addUtilities({

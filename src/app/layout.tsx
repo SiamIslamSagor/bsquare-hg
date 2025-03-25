@@ -6,6 +6,9 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ErrorBoundary } from "@/components/layout/error-boundary";
 import { CustomCursor } from "@/components/ui/custom-cursor";
+import { PageWrapper } from "@/components/layout/page-wrapper";
+import { TransitionProvider } from "@/context/transition-context";
+import { PageStateProvider } from "@/context/page-state-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,15 +55,19 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ErrorBoundary>
-            <CustomCursor />
-            <Navbar />
-            <main
-              className="flex min-h-screen flex-col pt-16"
-              suppressHydrationWarning
-            >
-              {children}
-            </main>
-            <Footer />
+            <TransitionProvider>
+              <PageStateProvider>
+                <CustomCursor />
+                <Navbar />
+                <main
+                  className="flex min-h-screen flex-col pt-16"
+                  suppressHydrationWarning
+                >
+                  <PageWrapper>{children}</PageWrapper>
+                </main>
+                <Footer />
+              </PageStateProvider>
+            </TransitionProvider>
           </ErrorBoundary>
         </ThemeProvider>
       </body>

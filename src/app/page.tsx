@@ -1,12 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CustomButton } from "@/components/ui/custom-button";
 import { SectionHeader } from "@/components/ui/section-header";
-import { staggerContainer, fadeIn } from "@/lib/animations";
+import { useTransition } from "@/context/transition-context";
+import { usePageState } from "@/context/page-state-context";
+import { ScrollAnimation } from "@/components/ui/scroll-animation";
 
 const featuredProjects = [
   {
@@ -131,143 +133,176 @@ export const dynamic = "force-dynamic";
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { isTransitioning } = useTransition();
+  const { hasAnimated, setHasAnimated } = usePageState();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax effect for hero section - now used in the component
+  const heroY = useTransform(scrollYProgress, [0, 0.3], [0, -50]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+
+  // Handle auto-rotation for featured projects
+  useEffect(() => {
+    if (!isTransitioning) {
+      const timer = setInterval(() => {
+        setCurrentIndex(prevIndex =>
+          prevIndex === featuredProjects.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 5000);
+
+      return () => clearInterval(timer);
+    }
+  }, [isTransitioning]);
+
+  // Set hasAnimated after initial animations
+  useEffect(() => {
+    if (!hasAnimated && !isTransitioning) {
+      const timer = setTimeout(() => {
+        setHasAnimated(true);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [hasAnimated, isTransitioning, setHasAnimated]);
 
   return (
-    <>
+    <div ref={containerRef}>
       {/* Hero Section */}
       <section className="relative overflow-hidden pb-16 pt-24 sm:pb-24 sm:pt-32">
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="show"
-            className="grid lg:grid-cols-2 gap-12 items-center"
-          >
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <motion.div
-              variants={fadeIn("right")}
-              className="text-center lg:text-left"
-            >
-              <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-                We craft <span className="text-primary">digital</span>{" "}
-                experiences that <span className="text-primary">inspire</span>
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                BSquare is a full-service digital agency specializing in
-                creating beautiful interfaces and meaningful experiences that
-                drive results.
-              </p>
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <CustomButton
-                  href="/contact"
-                  label="Start a Project"
-                  withArrow
-                  variant="default"
-                  size="lg"
-                />
-                <CustomButton
-                  href="/portfolio"
-                  label="View Our Work"
-                  variant="outline"
-                  size="lg"
-                />
-              </div>
-            </motion.div>
+            <ScrollAnimation direction="right" delay={0.2} distance={40}>
+              <motion.div
+                className="text-center lg:text-left"
+                style={{
+                  y: heroY,
+                  opacity: heroOpacity,
+                }}
+              >
+                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">
+                  We Create Digital{" "}
+                  <span className="text-primary">Experiences</span>
+                </h1>
+                <p className="text-xl leading-8 text-muted-foreground mb-6">
+                  Transforming ideas into beautiful, functional digital
+                  solutions that inspire and engage.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <CustomButton
+                    href="/contact"
+                    label="Start a Project"
+                    withArrow
+                  />
+                  <CustomButton
+                    href="/portfolio"
+                    label="View Our Work"
+                    variant="outline"
+                    withArrow
+                  />
+                </div>
+              </motion.div>
+            </ScrollAnimation>
 
-            {/* Right Content with Animation */}
-            <motion.div
-              variants={fadeIn("left", 0.2)}
-              className="relative h-[400px] sm:h-[600px] lg:h-[500px] w-full overflow-hidden rounded-xl"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl"></div>
-              {featuredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{
-                    opacity: currentIndex === index ? 1 : 0,
-                    y: currentIndex === index ? 0 : 20,
-                    zIndex: currentIndex === index ? 10 : 0,
-                  }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0 w-full h-full"
-                >
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover rounded-xl"
-                    priority={index === 0}
-                  />
-                </motion.div>
-              ))}
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                {featuredProjects.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`w-3 h-3 rounded-full ${
-                      currentIndex === index ? "bg-primary" : "bg-muted"
-                    }`}
-                    aria-label={`View slide ${index + 1}`}
-                  />
+            {/* Right Content */}
+            <ScrollAnimation direction="left" delay={0.3} distance={40}>
+              <div className="relative h-[400px] sm:h-[600px] lg:h-[500px] w-full overflow-hidden rounded-xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl"></div>
+                {featuredProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    initial={{ opacity: 0 }}
+                    animate={{
+                      opacity: currentIndex === index ? 1 : 0,
+                      zIndex: currentIndex === index ? 10 : 0,
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0 w-full h-full"
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover rounded-xl"
+                      priority={index === 0}
+                    />
+                  </motion.div>
                 ))}
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                  {featuredProjects.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`w-3 h-3 rounded-full ${
+                        currentIndex === index ? "bg-primary" : "bg-muted"
+                      }`}
+                      aria-label={`View slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
-            </motion.div>
-          </motion.div>
+            </ScrollAnimation>
+          </div>
         </div>
       </section>
 
       {/* Services Section */}
       <section className="bg-muted/30 py-16 md:py-24">
         <div className="container">
-          <SectionHeader
-            subtitle="What We Do"
-            title="Our Services"
-            description="We provide end-to-end solutions tailored to your business goals and user needs."
-          />
+          <ScrollAnimation>
+            <SectionHeader
+              subtitle="What We Do"
+              title="Our Services"
+              description="We provide end-to-end solutions tailored to your business goals and user needs."
+            />
+          </ScrollAnimation>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
             {services.map((service, index) => (
-              <motion.div
+              <ScrollAnimation
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                viewport={{ once: true, margin: "-100px" }}
-                whileHover={{ y: -5 }}
-                className="bg-background rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
+                delay={index * 0.15}
+                direction="up"
+                distance={40}
               >
-                <div className="mb-4 p-3 bg-primary/10 text-primary rounded-full w-fit">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground mb-4">
-                  {service.description}
-                </p>
-                <Link
-                  href={service.link}
-                  className="text-primary font-medium inline-flex items-center hover:underline"
-                >
-                  Learn more
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-1"
+                <div className="bg-background rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="mb-4 p-3 bg-primary/10 text-primary rounded-full w-fit">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    {service.description}
+                  </p>
+                  <Link
+                    href={service.link}
+                    className="text-primary font-medium inline-flex items-center hover:underline"
                   >
-                    <path
-                      d="M6.66669 3.33337L10.6667 8.00004L6.66669 12.6667"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Link>
-              </motion.div>
+                    Learn more
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="ml-1"
+                    >
+                      <path
+                        d="M6.66669 3.33337L10.6667 8.00004L6.66669 12.6667"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
@@ -276,87 +311,87 @@ export default function Home() {
       {/* Featured Work Section */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <SectionHeader
-            subtitle="Featured Projects"
-            title="Our Recent Work"
-            description="Check out some of our award-winning projects that showcase our expertise and creativity."
-          />
+          <ScrollAnimation>
+            <SectionHeader
+              subtitle="Featured Projects"
+              title="Our Recent Work"
+              description="Check out some of our award-winning projects that showcase our expertise and creativity."
+            />
+          </ScrollAnimation>
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredProjects.map((project, index) => (
-              <motion.div
+              <ScrollAnimation
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="group relative overflow-hidden rounded-xl"
+                delay={index * 0.15}
+                direction="up"
+                distance={40}
               >
-                <Link
-                  href={project.link}
-                  className="block aspect-[4/3] relative"
-                >
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
-                    <div className="text-center p-4">
-                      <span className="text-primary text-sm tracking-wide uppercase">
-                        {project.category}
-                      </span>
-                      <h3 className="text-white text-2xl font-bold mt-2">
-                        {project.title}
-                      </h3>
-                      <span className="mt-4 inline-flex items-center text-white border-b border-white pb-1">
-                        View Project
-                      </span>
+                <div className="group relative overflow-hidden rounded-xl">
+                  <Link
+                    href={project.link}
+                    className="block aspect-[4/3] relative"
+                  >
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                      <div className="text-center p-4">
+                        <span className="text-primary text-sm tracking-wide uppercase">
+                          {project.category}
+                        </span>
+                        <h3 className="text-white text-2xl font-bold mt-2">
+                          {project.title}
+                        </h3>
+                        <span className="mt-4 inline-flex items-center text-white border-b border-white pb-1">
+                          View Project
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </Link>
-              </motion.div>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </Link>
+                </div>
+              </ScrollAnimation>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <CustomButton
-              href="/portfolio"
-              label="View All Projects"
-              variant="outline"
-              withArrow
-            />
-          </div>
+          <ScrollAnimation delay={0.2}>
+            <div className="mt-12 text-center">
+              <CustomButton
+                href="/portfolio"
+                label="View All Projects"
+                variant="outline"
+                withArrow
+              />
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="bg-primary/5 py-16 md:py-24">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to bring your ideas to life?
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Let&apos;s collaborate to create something extraordinary that
-              exceeds your expectations.
-            </p>
-            <CustomButton
-              href="/contact"
-              label="Get in Touch"
-              size="lg"
-              withArrow
-            />
-          </motion.div>
+          <ScrollAnimation>
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Ready to Work Together?
+              </h2>
+              <p className="text-xl text-muted-foreground mb-8">
+                Let&apos;s turn your vision into reality with our creative and
+                technical expertise.
+              </p>
+              <CustomButton
+                href="/contact"
+                label="Start a Project"
+                size="lg"
+                withArrow
+              />
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
-    </>
+    </div>
   );
 }

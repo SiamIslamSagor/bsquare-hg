@@ -29,8 +29,7 @@ export function SectionHeader({
     <motion.div
       className={cn("max-w-3xl mb-12 md:mb-16", alignClasses[align], className)}
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
       {subtitle && (
