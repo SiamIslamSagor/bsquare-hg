@@ -44,6 +44,27 @@ html.has-custom-cursor * {
   }
 }
 
+/* Add radial gradient for preloader */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+/* Preloader styles */
+body {
+  background-color: #000;
+}
+
+.main-content {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.content-ready {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

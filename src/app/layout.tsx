@@ -9,6 +9,9 @@ import { CustomCursor } from "@/components/ui/custom-cursor";
 import { PageWrapper } from "@/components/layout/page-wrapper";
 import { TransitionProvider } from "@/context/transition-context";
 import { PageStateProvider } from "@/context/page-state-context";
+// import { Preloader } from "@/components/layout/preloader";
+import { LuxuryPreloader } from "@/components/layout/luxury-preloader";
+import { Preloader } from "@/components/layout/preloader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -57,19 +60,43 @@ export default function RootLayout({
           <ErrorBoundary>
             <TransitionProvider>
               <PageStateProvider>
-                <CustomCursor />
-                <Navbar />
-                <main
-                  className="flex min-h-screen flex-col pt-16"
-                  suppressHydrationWarning
-                >
-                  <PageWrapper>{children}</PageWrapper>
-                </main>
-                <Footer />
+                {/* <LuxuryPreloader /> */}
+                <Preloader />
+                <div className="main-content">
+                  <CustomCursor />
+                  <Navbar />
+                  <main
+                    className="flex min-h-screen flex-col pt-16"
+                    suppressHydrationWarning
+                  >
+                    <PageWrapper>{children}</PageWrapper>
+                  </main>
+                  <Footer />
+                </div>
               </PageStateProvider>
             </TransitionProvider>
           </ErrorBoundary>
         </ThemeProvider>
+
+        {/* Script to handle content visibility */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            document.addEventListener('DOMContentLoaded', function() {
+              const mainContent = document.querySelector('.main-content');
+              const showContent = () => {
+                if (mainContent) mainContent.classList.add('content-ready');
+              };
+              
+              // Listen for a custom event from the preloader
+              window.addEventListener('preloaderComplete', showContent);
+              
+              // Fallback in case preloader event doesn't fire
+              setTimeout(showContent, 5000);
+            });
+          `,
+          }}
+        />
       </body>
     </html>
   );
