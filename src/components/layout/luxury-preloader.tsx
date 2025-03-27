@@ -32,9 +32,13 @@ export function LuxuryPreloader() {
       hasInitialized.current = true;
 
       // Short timeout to ensure DOM is ready
-      const initTimer = setTimeout(() => {
-        animatePreloader();
-      }, 10);
+      const initTimer = setTimeout(
+        () => {
+          animatePreloader();
+        },
+        // 2800
+        2000
+      );
 
       return () => {
         clearTimeout(initTimer);

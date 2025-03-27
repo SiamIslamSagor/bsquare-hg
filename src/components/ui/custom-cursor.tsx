@@ -337,6 +337,7 @@ export function CustomCursor() {
 
       observer.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Follower color based on state

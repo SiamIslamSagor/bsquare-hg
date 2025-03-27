@@ -138,6 +138,7 @@ export function InteractiveBackground({
     return () => {
       window.removeEventListener("resize", updateDimensions);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorScheme, intensity, isInitialized, customColors]);
 
   // Add keyboard controls for accessibility

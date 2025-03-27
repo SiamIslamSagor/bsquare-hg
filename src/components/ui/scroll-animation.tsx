@@ -55,8 +55,11 @@ export function ScrollAnimation({
       }
 
       return () => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
+        // Save ref to a variable inside the effect to avoid closure issues
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        const currentRef = ref.current;
+        if (currentRef) {
+          observer.unobserve(currentRef);
         }
       };
     }

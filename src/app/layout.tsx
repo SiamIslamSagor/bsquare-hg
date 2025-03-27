@@ -11,33 +11,33 @@ import { TransitionProvider } from "@/context/transition-context";
 import { PageStateProvider } from "@/context/page-state-context";
 // import { Preloader } from "@/components/layout/preloader";
 import { LuxuryPreloader } from "@/components/layout/luxury-preloader";
-import { Preloader } from "@/components/layout/preloader";
+// import { Preloader } from "@/components/layout/preloader";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "BSquare | Creative Digital Agency",
-  description:
-    "We create beautiful digital experiences that inspire and engage. Web design, development, branding, and digital marketing services.",
-  keywords:
-    "digital agency, web design, web development, branding, ui/ux design, digital marketing",
-  authors: [{ name: "BSquare Agency" }],
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://bsquare.agency",
-    title: "BSquare | Creative Digital Agency",
-    description:
-      "We create beautiful digital experiences that inspire and engage. Web design, development, branding, and digital marketing services.",
-    siteName: "BSquare",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "BSquare | Creative Digital Agency",
-    description:
-      "We create beautiful digital experiences that inspire and engage. Web design, development, branding, and digital marketing services.",
-    creator: "@bsquare",
-  },
+  // description:
+  //   "We create beautiful digital experiences that inspire and engage. Web design, development, branding, and digital marketing services.",
+  // keywords:
+  //   "digital agency, web design, web development, branding, ui/ux design, digital marketing",
+  // authors: [{ name: "BSquare Agency" }],
+  // openGraph: {
+  //   type: "website",
+  //   locale: "en_US",
+  //   url: "https://bsquare.agency",
+  //   title: "BSquare | Creative Digital Agency",
+  //   description:
+  //     "We create beautiful digital experiences that inspire and engage. Web design, development, branding, and digital marketing services.",
+  //   siteName: "BSquare",
+  // },
+  // twitter: {
+  //   card: "summary_large_image",
+  //   title: "BSquare | Creative Digital Agency",
+  //   description:
+  //     "We create beautiful digital experiences that inspire and engage. Web design, development, branding, and digital marketing services.",
+  //   creator: "@bsquare",
+  // },
 };
 
 export default function RootLayout({
@@ -60,8 +60,8 @@ export default function RootLayout({
           <ErrorBoundary>
             <TransitionProvider>
               <PageStateProvider>
-                {/* <LuxuryPreloader /> */}
-                <Preloader />
+                <LuxuryPreloader />
+                {/* <Preloader /> */}
                 <div className="main-content">
                   <CustomCursor />
                   <Navbar />
