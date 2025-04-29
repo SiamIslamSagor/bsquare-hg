@@ -1,77 +1,83 @@
 "use client";
 
+import { PageLoader } from "@/components/layout/page-loader";
+import { SectionHeader } from "@/components/ui/section-header";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { SectionHeader } from "@/components/ui/section-header";
-import { PageLoader } from "@/components/layout/page-loader";
 
+import logop1 from "@/assets/images/portfolio/logop1.jpg";
+import web1 from "@/assets/images/portfolio/web1.jpg";
+import web2 from "@/assets/images/portfolio/web2.jpg";
+import web3 from "@/assets/images/portfolio/web3.jpg";
+import web4 from "@/assets/images/portfolio/web4.jpg";
+import appp1 from "@/assets/images/portfolio/appp1.jpg";
 // Example portfolio projects
 const projects = [
   {
-    id: "modern-ecommerce",
-    title: "Modern E-commerce Platform",
+    id: 1543,
+    title: "Job Portal Platform",
     description:
-      "A fully responsive e-commerce platform with dynamic product listings, user authentication, and secure payment processing.",
+      "A fully-featured job portal connecting employers and job seekers with advanced search filters, resume uploads, and real-time application tracking. Built for scalability and a seamless user experience across all devices.",
     category: "Web Development",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Crect fill='%23264653' width='1200' height='800'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='48' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EE-commerce Project%3C/text%3E%3C/svg%3E",
-    technologies: ["Next.js", "React", "Stripe", "Tailwind CSS"],
+    image: web1,
+    technologies: [
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "TailwindCSS",
+      "Framer Motion",
+    ],
     link: "#",
   },
   {
-    id: "banking-app",
-    title: "Modern Banking App",
+    id: 25675,
+    title: "Real Estate Marketplace",
     description:
-      "A sleek mobile banking application with real-time transaction tracking, budget management, and secure authentication.",
-    category: "Mobile App",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Crect fill='%232a9d8f' width='1200' height='800'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='48' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EBanking App%3C/text%3E%3C/svg%3E",
-    technologies: ["React Native", "Node.js", "MongoDB", "Firebase"],
-    link: "#",
-  },
-  {
-    id: "agency-rebrand",
-    title: "Creative Agency Rebrand",
-    description:
-      "Complete brand identity redesign for a growing creative agency, including logo, color palette, typography, and brand guidelines.",
-    category: "Branding",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Crect fill='%23e9c46a' width='1200' height='800'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='48' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EAgency Rebrand%3C/text%3E%3C/svg%3E",
-    technologies: ["Adobe Creative Suite", "Brand Strategy", "Visual Design"],
-    link: "#",
-  },
-  {
-    id: "fitness-tracker",
-    title: "Fitness Tracking Platform",
-    description:
-      "A comprehensive fitness tracking platform that allows users to monitor workouts, nutrition, and progress with detailed analytics.",
-    category: "Web & Mobile App",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Crect fill='%23f4a261' width='1200' height='800'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='48' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EFitness Tracker%3C/text%3E%3C/svg%3E",
-    technologies: ["React", "GraphQL", "Node.js", "React Native"],
-    link: "#",
-  },
-  {
-    id: "restaurant-website",
-    title: "Premium Restaurant Website",
-    description:
-      "An elegant website for a high-end restaurant featuring online reservations, menu browsing, and a virtual tour of the space.",
+      "A modern real estate platform allowing users to buy, sell, and rent properties including flats, houses, and land. Featuring smart property search, location maps, user profiles, and secure booking processes — optimized for all devices.",
     category: "Web Development",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Crect fill='%23e76f51' width='1200' height='800'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='48' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3ERestaurant Website%3C/text%3E%3C/svg%3E",
-    technologies: ["Next.js", "GSAP", "Framer Motion", "Tailwind CSS"],
+    image: web2,
+    technologies: ["Next.js", "Express.js", "Stripe", "TailwindCSS"],
     link: "#",
   },
   {
-    id: "healthcare-app",
-    title: "Healthcare Management System",
+    id: 3243,
+    title: "Home Garage - Logo Design & Branding",
     description:
-      "A secure and compliant healthcare management system for medical practices, with appointment scheduling, patient records, and billing.",
-    category: "Web Application",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Crect fill='%23118ab2' width='1200' height='800'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='48' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EHealthcare App%3C/text%3E%3C/svg%3E",
-    technologies: ["React", "Node.js", "PostgreSQL", "HIPAA Compliance"],
+      "Complete brand identity creation for Home Garage, a modern vehicle service company. Delivered a sleek, memorable logo along with full branding materials including color palettes, business cards, and social media assets to establish a strong, professional presence.",
+    category: "Graphics Design & Branding",
+    image: logop1,
+    technologies: ["Adobe Illustrator", "Adobe Photoshop", "Figma"],
+    link: "#",
+  },
+  {
+    id: 4,
+    title: "Food Hub - Food Donation Platform",
+    description:
+      "A humanitarian platform designed to connect donors, volunteers, and organizations to fight hunger. Food Hub enables users to donate excess food, schedule pickups, and track donations — promoting community-driven food sharing through a user-friendly digital platform.",
+    category: "Web Development",
+    image: web3,
+    technologies: ["Next.js", "Node.js", "Mongoose", "TailwindCSS"],
+    link: "#",
+  },
+  {
+    id: 6234,
+    title: "Home Garage — Vehicle Service Booking App",
+    description:
+      "Home Garage is a smart mobile app that connects vehicle owners with trusted garages and mechanics nearby. Users can schedule car maintenance, track service history, and get real-time updates — all from their phone. Built for reliability, ease, and speed.",
+    category: "Mobile App Development",
+    image: appp1,
+    technologies: ["Flutter", "Firebase", "GetX", "Google Maps API"],
+    link: "#",
+  },
+  {
+    id: 5456,
+    title: "Recipe Sharing Platform",
+    description:
+      "Cookify is a vibrant recipe-sharing platform where food lovers can discover, share, and save thousands of recipes across various cuisines. Features include user profiles, bookmarking, advanced search filters, and responsive design for a seamless cooking inspiration experience.",
+    category: "Web Development",
+    image: web4,
+    technologies: ["Next.js", "Firebase", "TailwindCSS", "Framer Motion"],
     link: "#",
   },
 ];
@@ -129,21 +135,21 @@ export default function PortfolioPage() {
                 transition={{ delay: index * 0.05, duration: 0.3 }}
                 className="bg-background rounded-xl overflow-hidden shadow-sm border group h-full flex flex-col"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/2.5] overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  {/* <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <Link
                       href={project.link}
                       className="bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
                     >
                       View Project
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
                   <span className="text-sm text-primary mb-2">
@@ -368,7 +374,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* Testimonials */}
-        <section className="container">
+        {/* <section className="container">
           <h2 className="text-3xl font-bold text-center mb-12">
             Client Testimonials
           </h2>
@@ -488,7 +494,7 @@ export default function PortfolioPage() {
               </p>
             </motion.div>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA Section */}
         <section className="bg-primary/5 py-16">

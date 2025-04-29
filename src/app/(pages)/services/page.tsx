@@ -4,69 +4,32 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { CustomButton } from "@/components/ui/custom-button";
 import { PageLoader } from "@/components/layout/page-loader";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
+import { IoTerminalOutline } from "react-icons/io5";
+import { PiChartLineUp } from "react-icons/pi";
+import { HiOutlinePaintBrush } from "react-icons/hi2";
+import { IoColorPaletteOutline } from "react-icons/io5";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { GoMegaphone } from "react-icons/go";
+import { VscTools } from "react-icons/vsc";
 
 const services = [
   {
     title: "Web Development",
     description:
       "Custom websites and web applications built with cutting-edge technologies and best practices.",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M3 3h18v18H3z"></path>
-        <path d="M3 9h18"></path>
-        <path d="M9 21V9"></path>
-      </svg>
-    ),
+    icon: <IoTerminalOutline className="w-6 h-6" />,
   },
   {
     title: "UI/UX Design",
     description:
       "Beautiful and intuitive user interfaces that enhance user experience and drive engagement.",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-      </svg>
-    ),
+    icon: <HiOutlinePaintBrush className="w-6 h-6" />,
   },
   {
     title: "Branding",
     description:
       "Comprehensive branding solutions that help your business stand out and connect with your audience.",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-      </svg>
-    ),
+    icon: <PiChartLineUp className="w-6 h-6" />,
   },
   {
     title: "Mobile Apps",
@@ -88,6 +51,31 @@ const services = [
         <line x1="12" y1="18" x2="12" y2="18"></line>
       </svg>
     ),
+  },
+  // new 4
+  {
+    title: "Graphics Design",
+    description:
+      "From logos to full brand identity kits, we create visually impactful designs that build recognition and set you apart.",
+    icon: <IoColorPaletteOutline className="w-6 h-6" />,
+  },
+  {
+    title: "E-Commerce Solutions",
+    description:
+      "Complete eCommerce websites with secure payment gateways, inventory systems, product management, and performance optimization.",
+    icon: <MdOutlineShoppingCart className="w-6 h-6" />,
+  },
+  {
+    title: "Digital Marketing",
+    description:
+      "ROI-driven strategies including SEO, Facebook & Google Ads, content marketing, and social media growth — all tailored to scale your business online.",
+    icon: <GoMegaphone className="w-6 h-6" />,
+  },
+  {
+    title: "Website Maintenance & Support",
+    description:
+      "Ongoing updates, backups, bug fixes, and performance monitoring to keep your site running smoothly and securely, 24/7.",
+    icon: <VscTools className="w-6 h-6" />,
   },
 ];
 

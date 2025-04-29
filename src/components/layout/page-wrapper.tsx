@@ -22,7 +22,7 @@ const routeToBackgroundVariant: Record<
 > = {
   "/": {
     variant: "geometric",
-    intensity: "light",
+    intensity: "medium",
     colorScheme: "primary",
   },
   "/about": {
@@ -32,22 +32,22 @@ const routeToBackgroundVariant: Record<
   },
   "/services": {
     variant: "geometric",
-    intensity: "light",
+    intensity: "medium",
     colorScheme: "primary",
   },
   "/portfolio": {
     variant: "geometric",
-    intensity: "light",
+    intensity: "medium",
     colorScheme: "accent",
   },
   "/blog": {
     variant: "geometric",
-    intensity: "light",
+    intensity: "medium",
     colorScheme: "primary",
   },
   "/contact": {
     variant: "geometric",
-    intensity: "light",
+    intensity: "medium",
     colorScheme: "primary",
   },
 };

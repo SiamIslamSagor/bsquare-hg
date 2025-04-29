@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add smooth scrolling for better transitions */
-html {
-  scroll-behavior: smooth;
-}
+/* Import Lenis styles */
+@import url("./lenis.css");
 
 /* Hide default cursor when custom cursor is active */
 html.has-custom-cursor {

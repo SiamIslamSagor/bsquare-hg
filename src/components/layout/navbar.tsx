@@ -70,15 +70,12 @@ export function Navbar() {
     );
   }
 
-  console.log("squareLogoBlack:", squareLogoBlack);
-  console.log("squareLogoWhite:", squareLogoWhite);
-
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 w-full py-3 transition-all duration-300 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-50 w-full py-4 transition-all duration-300 ease-in-out ${
         isScrolled
-          ? "bg-background/90 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
+          ? "bg-background/90 backdrop-blur-sm shadow-md"
+          : "bg-transparent dark:bg-[#131313]"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}

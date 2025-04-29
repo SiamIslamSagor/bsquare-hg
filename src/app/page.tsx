@@ -9,31 +9,32 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { useTransition } from "@/context/transition-context";
 import { usePageState } from "@/context/page-state-context";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
+import { PiChartLineUpBold } from "react-icons/pi";
+import project1 from "@/assets/images/projects/p1.jpg";
+import project2 from "@/assets/images/projects/p2.jpg";
+import project3 from "@/assets/images/projects/p3.jpg";
 
 const featuredProjects = [
   {
     id: 1,
     title: "EcoSmart Web Platform",
     category: "Web Development",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720' viewBox='0 0 1080 720'%3E%3Crect fill='%23264653' width='1080' height='720'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='40' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EEcoSmart Web Platform%3C/text%3E%3C/svg%3E",
-    link: "/portfolio/ecosmart",
+    image: project1,
+    link: "#",
   },
   {
     id: 2,
     title: "Luxury Brand Redesign",
     category: "Branding",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720' viewBox='0 0 1080 720'%3E%3Crect fill='%232a9d8f' width='1080' height='720'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='40' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3ELuxury Brand Redesign%3C/text%3E%3C/svg%3E",
-    link: "/portfolio/luxury-brand",
+    image: project2,
+    link: "#",
   },
   {
     id: 3,
     title: "Mobile Banking App",
     category: "UI/UX Design",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1080' height='720' viewBox='0 0 1080 720'%3E%3Crect fill='%23e9c46a' width='1080' height='720'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='40' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EMobile Banking App%3C/text%3E%3C/svg%3E",
-    link: "/portfolio/banking-app",
+    image: project3,
+    link: "#",
   },
 ];
 
@@ -57,7 +58,7 @@ const services = [
     ),
     title: "Web Development",
     description:
-      "Custom websites and applications built with modern technologies for optimal performance and user experience.",
+      "Building stunning, high-performing websites that deliver seamless user experiences and drive real business results. From sleek portfolio sites to complex enterprise platforms — we bring your vision to life.",
     link: "/services#web-development",
   },
   {
@@ -77,31 +78,16 @@ const services = [
         />
       </svg>
     ),
-    title: "UI/UX Design",
+    title: "Graphic Design",
     description:
-      "Intuitive and engaging user experiences designed to delight your users and achieve business goals.",
+      "Designing captivating visuals that breathe life into your brand identity. From logos to social media graphics — we create designs that are not just seen but remembered.",
     link: "/services#ui-design",
   },
   {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-6 h-6"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0"
-        />
-      </svg>
-    ),
-    title: "Branding",
+    icon: <PiChartLineUpBold className="w-6 h-6" />,
+    title: "Digital Marketing",
     description:
-      "Comprehensive brand identities that communicate your values and connect with your target audience.",
+      "Empowering businesses with smart digital marketing strategies that maximize visibility, generate leads, and drive growth. SEO, Social Media, PPC — we cover it all to take your brand further.",
     link: "/services#branding",
   },
   {
@@ -123,7 +109,7 @@ const services = [
     ),
     title: "Mobile Apps",
     description:
-      "Native and cross-platform mobile applications that deliver seamless experiences across devices.",
+      "Creating intuitive, fast, and feature-rich mobile applications tailored for both Android and iOS. Whether it's a startup app or a business solution, we deliver apps that engage and perform.",
     link: "/services#mobile-apps",
   },
 ];
@@ -185,12 +171,13 @@ export default function Home() {
                 }}
               >
                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">
-                  We Create Digital{" "}
-                  <span className="text-primary">Experiences</span>
+                  {/* We Create Digital{" "}
+                  <span className="text-primary">Experiences</span> */}
+                  Your Vision, Our Innovation
                 </h1>
                 <p className="text-xl leading-8 text-muted-foreground mb-6">
-                  Transforming ideas into beautiful, functional digital
-                  solutions that inspire and engage.
+                  We transform your ambitions into impactful digital solutions
+                  with creativity and precision.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <CustomButton
@@ -257,7 +244,7 @@ export default function Home() {
             <SectionHeader
               subtitle="What We Do"
               title="Our Services"
-              description="We provide end-to-end solutions tailored to your business goals and user needs."
+              description="Crafting Excellence Across Digital Horizons"
             />
           </ScrollAnimation>
 
@@ -332,7 +319,7 @@ export default function Home() {
                     href={project.link}
                     className="block aspect-[4/3] relative"
                   >
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
+                    {/* <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center">
                       <div className="text-center p-4">
                         <span className="text-primary text-sm tracking-wide uppercase">
                           {project.category}
@@ -344,7 +331,7 @@ export default function Home() {
                           View Project
                         </span>
                       </div>
-                    </div>
+                    </div> */}
                     <Image
                       src={project.image}
                       alt={project.title}

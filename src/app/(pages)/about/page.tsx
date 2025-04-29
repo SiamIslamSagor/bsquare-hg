@@ -1,88 +1,96 @@
 "use client";
 
-import Image from "next/image";
-import { SectionHeader } from "@/components/ui/section-header";
-import { CustomButton } from "@/components/ui/custom-button";
+import amanImg from "@/assets/images/team/aman.jpg";
+import ashiqImg from "@/assets/images/team/ashiq.jpg";
+import siamImg from "@/assets/images/team/siam.jpg";
+import tanvirImg from "@/assets/images/team/tanvir.png";
+import tusarImg from "@/assets/images/team/tusar.jpg";
 import { PageLoader } from "@/components/layout/page-loader";
+import { CustomButton } from "@/components/ui/custom-button";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
+import { SectionHeader } from "@/components/ui/section-header";
+import Image from "next/image";
+import { LuHandshake } from "react-icons/lu";
+import { MdSecurity } from "react-icons/md";
+import { RxLapTimer } from "react-icons/rx";
+import { FaFacebook } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
 
 const teamMembers = [
   {
-    name: "Alex Johnson",
-    role: "Founder & CEO",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'%3E%3Crect fill='%23264653' width='800' height='1000'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='40' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EAlex Johnson%3C/text%3E%3C/svg%3E",
-    bio: "With over 15 years of experience in digital innovation, Alex leads our team with vision and expertise.",
+    name: "Ashiqur Rahman",
+    role: "Founder | Chief Innovation Officer",
+    image: ashiqImg,
+
+    bio: "Ashiq is the driving force behind B Square Tech’s vision and innovation. With a deep passion for technology, design, and entrepreneurship, he founded B Square Tech to redefine how businesses grow digitally.",
     social: {
-      twitter: "https://twitter.com/username",
-      linkedin: "https://linkedin.com/in/username",
+      facebook: "https://www.facebook.com/moin.rahman.397",
+      whatsapp: "https://wa.me/8801308970800",
     },
   },
   {
-    name: "Sarah Williams",
-    role: "Creative Director",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'%3E%3Crect fill='%232a9d8f' width='800' height='1000'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='40' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3ESarah Williams%3C/text%3E%3C/svg%3E",
-    bio: "Sarah brings her artistic vision and strategic thinking to create impactful brand experiences.",
+    name: "Tanvir Alom",
+    role: "Co-Founder | Chief Technology Officer",
+    image: tanvirImg,
+    bio: "Tanvir is the technological architect behind B Square Tech’s innovation. As Co-Founder and CTO, he drives the company’s technical vision, overseeing software architecture, security, and system scalability.",
     social: {
-      twitter: "https://twitter.com/username",
-      linkedin: "https://linkedin.com/in/username",
+      facebook: "https://www.facebook.com/profile.php?id=61566861736650",
+      whatsapp: "https://wa.me/8801990821898",
     },
   },
   {
-    name: "Michael Chen",
-    role: "Lead Developer",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'%3E%3Crect fill='%23e9c46a' width='800' height='1000'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='40' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EMichael Chen%3C/text%3E%3C/svg%3E",
-    bio: "Michael&apos;s technical expertise ensures our digital solutions are robust, scalable, and future-proof.",
-    social: {
-      twitter: "https://twitter.com/username",
-      linkedin: "https://linkedin.com/in/username",
-    },
+    name: "Md Aman Ullah Aman",
+    role: "Lead Graphics & UI/UX Designer",
+    image: amanImg,
+    bio: "The creative heart of B Square Tech, our Lead Designer transforms ideas into stunning visual experiences. With a sharp eye for aesthetics and deep understanding of user behavior, they craft designs that are both beautiful and functional — from brand identities to seamless user interfaces.",
+    social: {},
   },
   {
-    name: "Emily Rodriguez",
-    role: "UX/UI Designer",
-    image:
-      "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1000' viewBox='0 0 800 1000'%3E%3Crect fill='%23f4a261' width='800' height='1000'/%3E%3Ctext fill='%23ffffff' font-family='sans-serif' font-size='40' dy='10.5' font-weight='bold' x='50%25' y='50%25' text-anchor='middle'%3EEmily Rodriguez%3C/text%3E%3C/svg%3E",
-    bio: "Emily combines user research with creative design to craft intuitive and engaging user experiences.",
-    social: {
-      twitter: "https://twitter.com/username",
-      linkedin: "https://linkedin.com/in/username",
-    },
+    name: "MD SIAM ISLAM SAGOR",
+    role: "Lead Web Developer",
+    image: siamImg,
+    bio: "The coding architect behind B Square Tech’s web excellence, our Lead Web Developer ensures that every digital product is crafted with precision, speed, and performance. They lead front-end and back-end development efforts, driving technical innovation and transforming complex ideas into seamless, responsive web experiences.",
+    social: {},
+  },
+  {
+    name: "Tushar Molla",
+    role: "Lead App Developer",
+    image: tusarImg,
+    bio: "Our Lead App Developer is the engine behind B Square Tech’s mobile innovation. With expertise in both Android and iOS platforms, they architect fast, intuitive, and scalable mobile apps that turn complex user needs into sleek, high-performance experiences — all while staying ahead of trends and tech.",
+    social: {},
   },
 ];
 
 const timeline = [
   {
-    year: "2015",
-    title: "Humble Beginnings",
-    description:
-      "BSquare was founded in a small studio apartment with a vision to create beautiful digital experiences.",
-  },
-  {
-    year: "2017",
-    title: "Studio Expansion",
-    description:
-      "We moved to a proper office space and expanded our team to include specialized designers and developers.",
-  },
-  {
-    year: "2019",
-    title: "Award Recognition",
-    description:
-      "Our projects gained industry recognition, winning multiple design and development awards.",
-  },
-  {
     year: "2021",
-    title: "Global Reach",
+    title: " — The Build Begins",
     description:
-      "We expanded our client base internationally, working with brands across four continents.",
+      "B Square Tech was officially launched with a small remote team, taking on freelance web and app development projects from local businesses.",
+  },
+  {
+    year: "2022",
+    title: " — Client Portal v1 Released",
+    description:
+      "We built a dedicated client portal for real-time project tracking, communication, and feedback — taking our client experience to the next level.",
   },
   {
     year: "2023",
-    title: "Innovation Lab",
+    title: "— Services Go Pro",
     description:
-      "We launched our innovation lab focused on emerging technologies and cutting-edge digital solutions.",
+      "Expanded our service offerings to include branding, graphics design, and digital marketing — transforming into a full-service tech agency.",
+  },
+  {
+    year: "2024",
+    title: " — Cross-Border Projects",
+    description:
+      "Delivered projects for clients across 7+ countries, adapting to diverse industries and introducing localized digital solutions.",
+  },
+  {
+    year: "2025",
+    title: " — Innovation and Beyond",
+    description:
+      "Integrated AI tools, animation workflows, and automation into our pipeline — leading a new wave of creative, scalable digital transformation.",
   },
 ];
 
@@ -97,9 +105,21 @@ export default function AboutPage() {
               <ScrollAnimation direction="right" delay={0.2}>
                 <div className="text-center lg:text-left">
                   <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">
-                    We are <span className="text-primary">BSquare</span>
+                    {/* We are <span className="text-primary">BSquare</span> */}
+                    Who We Are
                   </h1>
                   <p className="text-xl leading-8 text-muted-foreground mb-6">
+                    Founded with the mission to bridge technology and
+                    creativity, B Square Tech has quickly become a trusted name
+                    for businesses seeking digital transformation. We are a
+                    passionate team of developers, designers, and strategists
+                    dedicated to crafting high-quality websites, apps, visuals,
+                    and marketing strategies. From startups to established
+                    enterprises — we deliver tailored, scalable, and
+                    performance-driven solutions that help businesses thrive in
+                    the digital age.
+                  </p>
+                  {/* <p className="text-xl leading-8 text-muted-foreground mb-6">
                     A collective of creative minds passionate about crafting
                     digital experiences that inspire and drive results.
                   </p>
@@ -107,7 +127,7 @@ export default function AboutPage() {
                     Founded in 2015, we&apos;ve been helping brands transform
                     their digital presence through innovative design and
                     technology solutions.
-                  </p>
+                  </p> */}
                   <CustomButton
                     href="/contact"
                     label="Get to Know Us"
@@ -134,76 +154,31 @@ export default function AboutPage() {
           <div className="container">
             <ScrollAnimation>
               <SectionHeader
-                subtitle="Our Mission"
-                title="Why We Do What We Do"
-                description="We believe in the power of good design and technology to transform businesses and people's lives."
+                // subtitle="Our Mission"
+                title="Why Choose Us?"
+                description="Because We Don’t Just Build Projects — We Build Trust."
               />
             </ScrollAnimation>
 
             <div className="grid md:grid-cols-3 gap-6 mt-12">
               {[
                 {
-                  icon: (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
-                  ),
-                  title: "Integrity",
+                  icon: <LuHandshake className="w-6 h-6" />,
+                  title: "Client-Centered Approach",
                   description:
-                    "We build trust through transparent communication and delivering on our promises.",
+                    "We listen first, act second. Your goals become our goals, and every solution is crafted around your unique needs.",
                 },
                 {
-                  icon: (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M2 12h5l2 5 5-10 2 5h6"></path>
-                    </svg>
-                  ),
-                  title: "Innovation",
+                  icon: <MdSecurity className="w-6 h-6" />,
+                  title: "End-to-End Expertise",
                   description:
-                    "We challenge conventions and explore new possibilities to create unique solutions.",
+                    "From strategy to execution, we handle everything in-house — design, development, deployment, and marketing.",
                 },
                 {
-                  icon: (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="9" cy="7" r="4"></circle>
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg>
-                  ),
-                  title: "Collaboration",
+                  icon: <RxLapTimer className="w-6 h-6" />,
+                  title: "On-Time Delivery",
                   description:
-                    "We work closely with our clients, treating their goals as our own.",
+                    "We respect deadlines as much as we respect quality. Our systems ensure rapid development without compromise.",
                 },
               ].map((value, index) => (
                 <ScrollAnimation
@@ -233,7 +208,7 @@ export default function AboutPage() {
               <SectionHeader
                 subtitle="Our Journey"
                 title="From Startup to Industry Leader"
-                description="A brief timeline of our growth and milestones over the years."
+                description="A timeline of our real growth, expansion, and future vision."
               />
             </ScrollAnimation>
 
@@ -295,65 +270,274 @@ export default function AboutPage() {
               />
             </ScrollAnimation>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-              {teamMembers.map((member, index) => (
-                <ScrollAnimation
-                  key={member.name}
-                  delay={index * 0.15}
-                  direction="up"
-                  distance={40}
-                >
-                  <div className="bg-background rounded-xl overflow-hidden shadow-sm border group">
-                    <div className="aspect-[3/4] relative overflow-hidden">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold">{member.name}</h3>
-                      <p className="text-primary text-sm mb-2">{member.role}</p>
-                      <p className="text-muted-foreground text-sm mb-4">
-                        {member.bio}
-                      </p>
-                      <div className="flex space-x-3">
-                        <a
-                          href={member.social.twitter}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
+            <div className="mt-12 space-y-8">
+              {/* First row - 2 members */}
+              <div className="flex flex-col justify-center md:flex-row gap-6 md:max-w-[768px] lg:max-w-[1000px] mx-auto">
+                <div className="flex-1 md:max-w-[350px]">
+                  <ScrollAnimation delay={0.15} direction="up" distance={40}>
+                    <div className="bg-background rounded-xl overflow-hidden shadow-sm border group h-full">
+                      <div className="aspect-[3/4] relative overflow-hidden">
+                        <Image
+                          src={teamMembers[0].image}
+                          alt={teamMembers[0].name}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold">
+                          {teamMembers[0].name}
+                        </h3>
+                        <p className="text-primary text-sm mb-2">
+                          {teamMembers[0].role}
+                        </p>
+                        <p className="text-muted-foreground text-sm mb-4">
+                          {teamMembers[0].bio}
+                        </p>
+                        <div className="flex space-x-3">
+                          <a
+                            href={teamMembers[0].social.facebook}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
                           >
-                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                          </svg>
-                        </a>
-                        <a
-                          href={member.social.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
+                            <FaFacebook className="w-6 h-6" />
+                          </a>
+                          <a
+                            href={teamMembers[0].social.whatsapp}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
                           >
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                          </svg>
-                        </a>
+                            <IoLogoWhatsapp className="w-6 h-6" />
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </ScrollAnimation>
-              ))}
+                  </ScrollAnimation>
+                </div>
+
+                <div className="flex-1 md:max-w-[350px]">
+                  <ScrollAnimation delay={0.3} direction="up" distance={40}>
+                    <div className="bg-background rounded-xl overflow-hidden shadow-sm border group h-full">
+                      <div className="aspect-[3/4] relative overflow-hidden">
+                        <Image
+                          src={teamMembers[1].image}
+                          alt={teamMembers[1].name}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold">
+                          {teamMembers[1].name}
+                        </h3>
+                        <p className="text-primary text-sm mb-2">
+                          {teamMembers[1].role}
+                        </p>
+                        <p className="text-muted-foreground text-sm mb-4">
+                          {teamMembers[1].bio}
+                        </p>
+                        <div className="flex space-x-3">
+                          <a
+                            href={teamMembers[1].social.facebook}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <FaFacebook className="w-6 h-6" />
+                          </a>
+                          <a
+                            href={teamMembers[1].social.whatsapp}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <IoLogoWhatsapp className="w-6 h-6" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+                </div>
+              </div>
+
+              {/* Second row - 3 members */}
+              <div className="flex justify-between flex-col md:flex-row gap-6 md:max-w-[1000px] mx-auto">
+                <div className="flex-1 md:max-w-[300px]">
+                  <ScrollAnimation delay={0.45} direction="up" distance={40}>
+                    <div className="bg-background rounded-xl overflow-hidden shadow-sm border group h-full">
+                      <div className="aspect-[3/4] relative overflow-hidden">
+                        <Image
+                          src={teamMembers[2].image}
+                          alt={teamMembers[2].name}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold">
+                          {teamMembers[2].name}
+                        </h3>
+                        <p className="text-primary text-sm mb-2">
+                          {teamMembers[2].role}
+                        </p>
+                        <p className="text-muted-foreground text-sm mb-4">
+                          {teamMembers[2].bio}
+                        </p>
+                        {/* <div className="flex space-x-3">
+                          <a
+                            href={teamMembers[2].social.twitter}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <svg
+                              className="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
+                              <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07a4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                          </a>
+                          <a
+                            href={teamMembers[2].social.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <svg
+                              className="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
+                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                          </a>
+                        </div> */}
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+                </div>
+
+                <div className="flex-1 md:max-w-[300px]">
+                  <ScrollAnimation delay={0.6} direction="up" distance={40}>
+                    <div className="bg-background rounded-xl overflow-hidden shadow-sm border group h-full">
+                      <div className="aspect-[3/4] relative overflow-hidden">
+                        <Image
+                          src={teamMembers[3].image}
+                          alt={teamMembers[3].name}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold">
+                          {teamMembers[3].name}
+                        </h3>
+                        <p className="text-primary text-sm mb-2">
+                          {teamMembers[3].role}
+                        </p>
+                        <p className="text-muted-foreground text-sm mb-4">
+                          {teamMembers[3].bio}
+                        </p>
+                        {/* <div className="flex space-x-3">
+                          <a
+                            href={teamMembers[3].social.twitter}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <svg
+                              className="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
+                              <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                          </a>
+                          <a
+                            href={teamMembers[3].social.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <svg
+                              className="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
+                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                          </a>
+                        </div> */}
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+                </div>
+
+                <div className="flex-1 md:max-w-[300px]">
+                  <ScrollAnimation delay={0.75} direction="up" distance={40}>
+                    <div className="bg-background rounded-xl overflow-hidden shadow-sm border group h-full">
+                      <div className="aspect-[3/4] relative overflow-hidden">
+                        <Image
+                          src={teamMembers[4].image}
+                          alt={teamMembers[4].name}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold">
+                          {teamMembers[4].name}
+                        </h3>
+                        <p className="text-primary text-sm mb-2">
+                          {teamMembers[4].role}
+                        </p>
+                        <p className="text-muted-foreground text-sm mb-4">
+                          {teamMembers[4].bio}
+                        </p>
+                        {/* <div className="flex space-x-3">
+                          <a
+                            href={teamMembers[4].social.twitter}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <svg
+                              className="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
+                              <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07a4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                          </a>
+                          <a
+                            href={teamMembers[4].social.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <svg
+                              className="w-5 h-5"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
+                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                          </a>
+                        </div> */}
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+                </div>
+              </div>
             </div>
           </div>
         </section>

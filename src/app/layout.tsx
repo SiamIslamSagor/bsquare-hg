@@ -9,6 +9,8 @@ import { CustomCursor } from "@/components/ui/custom-cursor";
 import { PageWrapper } from "@/components/layout/page-wrapper";
 import { TransitionProvider } from "@/context/transition-context";
 import { PageStateProvider } from "@/context/page-state-context";
+import { SmoothScrollProvider } from "@/context/smooth-scroll-context";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 // import { Preloader } from "@/components/layout/preloader";
 import { LuxuryPreloader } from "@/components/layout/luxury-preloader";
 // import { Preloader } from "@/components/layout/preloader";
@@ -61,19 +63,22 @@ export default function RootLayout({
           <ErrorBoundary>
             <TransitionProvider>
               <PageStateProvider>
-                <LuxuryPreloader />
-                {/* <Preloader /> */}
-                <div className="main-content">
-                  <CustomCursor />
-                  <Navbar />
-                  <main
-                    className="flex min-h-screen flex-col pt-16"
-                    suppressHydrationWarning
-                  >
-                    <PageWrapper>{children}</PageWrapper>
-                  </main>
-                  <Footer />
-                </div>
+                <SmoothScrollProvider>
+                  <LuxuryPreloader />
+                  {/* <Preloader /> */}
+                  <div className="main-content">
+                    <CustomCursor />
+                    <Navbar />
+                    <main
+                      className="flex min-h-screen flex-col pt-16"
+                      suppressHydrationWarning
+                    >
+                      <PageWrapper>{children}</PageWrapper>
+                    </main>
+                    <Footer />
+                    <ScrollToTop />
+                  </div>
+                </SmoothScrollProvider>
               </PageStateProvider>
             </TransitionProvider>
           </ErrorBoundary>
