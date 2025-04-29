@@ -9,11 +9,11 @@ html {
 
 /* Hide default cursor when custom cursor is active */
 html.has-custom-cursor {
-  cursor: none !important;
+  /* cursor: none !important; */
 }
 
 html.has-custom-cursor * {
-  cursor: none !important;
+  /* cursor: none !important; */
 }
 
 /* Magnetic effect for special interactive elements */

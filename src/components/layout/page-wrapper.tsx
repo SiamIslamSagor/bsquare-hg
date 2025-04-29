@@ -22,7 +22,7 @@ const routeToBackgroundVariant: Record<
 > = {
   "/": {
     variant: "geometric",
-    intensity: "medium",
+    intensity: "light",
     colorScheme: "primary",
   },
   "/about": {
@@ -31,7 +31,7 @@ const routeToBackgroundVariant: Record<
     colorScheme: "primary",
   },
   "/services": {
-    variant: "noise",
+    variant: "geometric",
     intensity: "light",
     colorScheme: "primary",
   },
@@ -41,12 +41,12 @@ const routeToBackgroundVariant: Record<
     colorScheme: "accent",
   },
   "/blog": {
-    variant: "noise",
+    variant: "geometric",
     intensity: "light",
     colorScheme: "primary",
   },
   "/contact": {
-    variant: "noise",
+    variant: "geometric",
     intensity: "light",
     colorScheme: "primary",
   },
@@ -60,18 +60,18 @@ export function PageWrapper({ children }: PageWrapperProps) {
   // Get background configuration based on current route
   const getBackgroundConfig = () => {
     // Handle nested routes like blog posts
-    if (pathname.startsWith("/blog/")) {
+    if (pathname.startsWith("/services/")) {
       return {
-        variant: "geometric" as const,
-        intensity: "light" as const,
+        variant: "noise" as const,
+        intensity: "heavy" as const,
         colorScheme: "primary" as const,
       };
     }
 
     return (
       routeToBackgroundVariant[pathname] || {
-        variant: "geometric" as const,
-        intensity: "light" as const,
+        variant: "noise" as const,
+        intensity: "heavy" as const,
         colorScheme: "primary" as const,
       }
     );
@@ -116,6 +116,8 @@ export function PageWrapper({ children }: PageWrapperProps) {
     // Return a simpler version for server-side rendering to avoid hydration issues
     return <>{children}</>;
   }
+
+  console.log("config.variant:", config);
 
   return (
     <InteractiveBackground

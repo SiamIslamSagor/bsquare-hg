@@ -1,29 +1,35 @@
 "use client";
 
-import * as React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
-  SheetTrigger,
   SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme/theme-toggle";
+import { AnimatePresence, motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import * as React from "react";
+import bLogo from "@/assets/images/bLogo.png";
+import squareLogoBlack from "@/assets/images/sql.png";
+import squareLogoWhite from "@/assets/images/sqlW.png";
 
 const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Portfolio", href: "/portfolio" },
-  { name: "Blog", href: "/blog" },
+  // { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
+  const { theme } = useTheme();
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
   const [activeIndex, setActiveIndex] = React.useState(-1);
@@ -64,6 +70,9 @@ export function Navbar() {
     );
   }
 
+  console.log("squareLogoBlack:", squareLogoBlack);
+  console.log("squareLogoWhite:", squareLogoWhite);
+
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 w-full py-3 transition-all duration-300 ease-in-out ${
@@ -76,17 +85,79 @@ export function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div className="container flex items-center justify-between">
-        <Link href="/" className="flex items-center z-10">
-          <motion.span
-            className="text-xl font-bold tracking-tight relative magnetic-effect"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            data-cursor-text="Home"
-          >
-            <span className="text-primary">B</span>Square
-            <span className="absolute -bottom-1 left-0 w-1/2 h-0.5 bg-primary rounded-full"></span>
-          </motion.span>
+        <Link href="/" className="flex gap-2 items-center z-10">
+          {theme === "light" ? (
+            <>
+              <motion.div
+                className="text-xl font-bold tracking-tight relative magnetic-effect"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                data-cursor-text="Home"
+              >
+                <div className=" duration-75 active:scale-90 transition">
+                  <Image
+                    src={bLogo}
+                    alt="B Button"
+                    width={56}
+                    height={56}
+                    className="object-cover"
+                  />
+                </div>
+              </motion.div>
+
+              <div className=" duration-75 active:scale-90 transition -mb-5">
+                <Image
+                  src={squareLogoBlack}
+                  alt="Square Text Logo Black"
+                  width={115}
+                  className="object-cover"
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              {/* new */}
+              <motion.div
+                className="text-xl font-bold tracking-tight relative magnetic-effect"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                data-cursor-text="Home"
+              >
+                <div className=" duration-75 active:scale-90 transition">
+                  <Image
+                    src={bLogo}
+                    alt="B Button"
+                    width={56}
+                    height={56}
+                    className="object-cover"
+                  />
+                </div>
+              </motion.div>
+
+              <div className=" duration-75 active:scale-90 transition -mb-5">
+                <Image
+                  src={squareLogoWhite}
+                  alt="Square Text Logo White"
+                  width={115}
+                  className="object-cover"
+                />
+              </div>
+
+              {/* old */}
+              {/* <motion.span
+                className="text-xl font-bold tracking-tight relative magnetic-effect"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                data-cursor-text="Home"
+              >
+                <span className="text-primary">B</span>Square
+                <span className="absolute -bottom-1 left-0 w-1/2 h-0.5 bg-primary rounded-full"></span>
+              </motion.span> */}
+            </>
+          )}
         </Link>
 
         {/* Desktop Navigation */}

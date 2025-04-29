@@ -28,16 +28,29 @@ export function CustomCursor() {
     mass: 0.45,
   });
 
+  console.log(cursorX, cursorY);
+
   // Spring config for follower (more damping for smoother follow with slight delay)
+  // const followerX = useSpring(mouseX, {
+  //   damping: 20,
+  //   stiffness: 180,
+  //   mass: 0.55,
+  // });
+  // const followerY = useSpring(mouseY, {
+  //   damping: 20,
+  //   stiffness: 180,
+  //   mass: 0.55,
+  // });
+
   const followerX = useSpring(mouseX, {
-    damping: 20,
-    stiffness: 180,
-    mass: 0.55,
+    damping: 12,
+    stiffness: 300,
+    mass: 0.3,
   });
   const followerY = useSpring(mouseY, {
-    damping: 20,
-    stiffness: 180,
-    mass: 0.55,
+    damping: 12,
+    stiffness: 300,
+    mass: 0.3,
   });
 
   // Scale springs for interactive feedback
@@ -146,8 +159,8 @@ export function CustomCursor() {
       const distanceY = e.clientY - centerY;
 
       // Move the element slightly towards the cursor
-      target.style.transform = `translate(${distanceX * 0.2}px, ${
-        distanceY * 0.2
+      target.style.transform = `translate(${distanceX * 0.7}px, ${
+        distanceY * 0.7
       }px)`;
     };
 

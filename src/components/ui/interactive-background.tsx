@@ -87,13 +87,13 @@ export function InteractiveBackground({
   const getParticleCount = () => {
     switch (intensity) {
       case "light":
-        return 8;
+        return 40;
       case "medium":
-        return 12;
+        return 150;
       case "heavy":
-        return 15;
+        return 250;
       default:
-        return 10;
+        return 100;
     }
   };
 
@@ -114,7 +114,7 @@ export function InteractiveBackground({
         const colors = getColorPalette();
         const newParticles: ParticleProps[] = [];
         const particleCount = getParticleCount();
-
+        console.log("particleCount:", particleCount);
         for (let i = 0; i < particleCount; i++) {
           newParticles.push({
             x: Math.random() * width,
@@ -192,6 +192,7 @@ export function InteractiveBackground({
 
   // Different background styles based on variant
   const renderBackground = () => {
+    console.log("variant:", variant);
     switch (variant) {
       case "gradient":
         return (
@@ -217,7 +218,7 @@ export function InteractiveBackground({
             <div className="absolute inset-0 backdrop-blur-[1px] bg-background/20" />
 
             {/* Main geometric elements - reduced count */}
-            {particles.slice(0, 8).map((particle, index) => (
+            {particles.slice(0, 40).map((particle, index) => (
               <motion.div
                 key={index}
                 className="absolute rounded-md bg-primary/5"
@@ -323,7 +324,7 @@ export function InteractiveBackground({
       case "particles":
         return (
           <>
-            {particles.slice(0, 10).map((particle, index) => (
+            {particles.slice(0, 100).map((particle, index) => (
               <motion.div
                 key={index}
                 className="absolute rounded-full"
@@ -437,7 +438,7 @@ export function InteractiveBackground({
       default:
         return (
           <>
-            {particles.slice(0, 6).map((particle, index) => (
+            {particles.slice(0, 250).map((particle, index) => (
               <motion.div
                 key={index}
                 className="absolute rounded-full"

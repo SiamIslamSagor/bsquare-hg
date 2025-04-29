@@ -118,7 +118,7 @@ The easiest way to deploy your BSquare website is using the [Vercel Platform](ht
 For inquiries, please reach out to:
 
 - **Email:** info@bsquare.agency
-- **Website:** [https://bsquare.agency](https://bsquare.agency)
+- **Website:** [https://bsquaretech.com](https://bsquaretech.com)
 
 ## License
 
