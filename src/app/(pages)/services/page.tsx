@@ -11,6 +11,7 @@ import { IoColorPaletteOutline } from "react-icons/io5";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GoMegaphone } from "react-icons/go";
 import { VscTools } from "react-icons/vsc";
+import { slugify } from "@/lib/utils";
 
 const services = [
   {
@@ -121,8 +122,8 @@ export default function ServicesPage() {
                       {service.description}
                     </p>
                     <CustomButton
-                      href="/contact"
-                      label="Learn More"
+                      href={`/services/${slugify(service.title)}`}
+                      label="View Pricing"
                       variant="ghost"
                       withArrow
                     />
@@ -183,6 +184,8 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+
+        {/* create a subscription section known as starter, standard, pro, premium subscription */}
 
         {/* CTA Section */}
         <section className="py-16 md:py-24">

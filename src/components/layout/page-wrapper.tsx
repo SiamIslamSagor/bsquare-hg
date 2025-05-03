@@ -117,7 +117,7 @@ export function PageWrapper({ children }: PageWrapperProps) {
     return <>{children}</>;
   }
 
-  console.log("config.variant:", config);
+  // console.log("config.variant:", config);
 
   return (
     <InteractiveBackground

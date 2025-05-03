@@ -28,7 +28,7 @@ export function CustomCursor() {
     mass: 0.45,
   });
 
-  console.log(cursorX, cursorY);
+  // console.log(cursorX, cursorY);
 
   // Spring config for follower (more damping for smoother follow with slight delay)
   // const followerX = useSpring(mouseX, {

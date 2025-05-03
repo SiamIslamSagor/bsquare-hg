@@ -114,7 +114,7 @@ export function InteractiveBackground({
         const colors = getColorPalette();
         const newParticles: ParticleProps[] = [];
         const particleCount = getParticleCount();
-        console.log("particleCount:", particleCount);
+        // console.log("particleCount:", particleCount);
         for (let i = 0; i < particleCount; i++) {
           newParticles.push({
             x: Math.random() * width,

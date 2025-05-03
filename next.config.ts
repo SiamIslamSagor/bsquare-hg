@@ -10,9 +10,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  output: "export",
-  basePath: "",
-  assetPrefix: undefined,
+  // output: "export",
+  // basePath: "",
+  // assetPrefix: undefined,
 };
 
 export default nextConfig;

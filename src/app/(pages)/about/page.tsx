@@ -2,9 +2,9 @@
 
 import amanImg from "@/assets/images/team/aman.jpg";
 import ashiqImg from "@/assets/images/team/ashiq.jpg";
-import siamImg from "@/assets/images/team/siam.jpg";
-import tanvirImg from "@/assets/images/team/tanvir.png";
-import tusarImg from "@/assets/images/team/tusar.jpg";
+import siamImg from "@/assets/images/team/siam2.jpg";
+import tanvirImg from "@/assets/images/team/tanvir2.jpg";
+import tusarImg from "@/assets/images/team/russian.jpg";
 import { PageLoader } from "@/components/layout/page-loader";
 import { CustomButton } from "@/components/ui/custom-button";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
