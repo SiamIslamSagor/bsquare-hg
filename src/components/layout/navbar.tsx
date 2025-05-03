@@ -20,11 +20,11 @@ import squareLogoWhite from "@/assets/images/sqlW.png";
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Portfolio", href: "/portfolio" },
+  { name: "About", href: "/about/" },
+  { name: "Services", href: "/services/" },
+  { name: "Portfolio", href: "/portfolio/" },
   // { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
+  { name: "Contact", href: "/contact/" },
 ];
 
 export function Navbar() {
@@ -75,7 +75,7 @@ export function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 w-full py-4 transition-all duration-300 ease-in-out ${
         isScrolled
           ? "bg-background/90 backdrop-blur-sm shadow-md"
-          : "bg-transparent dark:bg-[#131313]"
+          : "bg-background/90 dark:bg-[#131313]"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -207,7 +207,7 @@ export function Navbar() {
 
                     {pathname === item.href && (
                       <motion.span
-                        className="absolute bottom-0 left-5 right-5 h-0.5 bg-primary rounded-full"
+                        className="absolute bottom-0 left-5 right-5 h-1 bg-primary rounded-full"
                         layoutId="underline"
                       />
                     )}

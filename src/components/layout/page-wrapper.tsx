@@ -25,27 +25,27 @@ const routeToBackgroundVariant: Record<
     intensity: "medium",
     colorScheme: "primary",
   },
-  "/about": {
+  "/about/": {
     variant: "geometric",
     intensity: "medium",
     colorScheme: "primary",
   },
-  "/services": {
+  "/services/": {
     variant: "geometric",
     intensity: "medium",
     colorScheme: "primary",
   },
-  "/portfolio": {
+  "/portfolio/": {
     variant: "geometric",
     intensity: "medium",
     colorScheme: "accent",
   },
-  "/blog": {
+  "/blog/": {
     variant: "geometric",
     intensity: "medium",
     colorScheme: "primary",
   },
-  "/contact": {
+  "/contact/": {
     variant: "geometric",
     intensity: "medium",
     colorScheme: "primary",
@@ -62,16 +62,16 @@ export function PageWrapper({ children }: PageWrapperProps) {
     // Handle nested routes like blog posts
     if (pathname.startsWith("/services/")) {
       return {
-        variant: "noise" as const,
-        intensity: "heavy" as const,
+        variant: "geometric" as const,
+        intensity: "medium" as const,
         colorScheme: "primary" as const,
       };
     }
 
     return (
       routeToBackgroundVariant[pathname] || {
-        variant: "noise" as const,
-        intensity: "heavy" as const,
+        variant: "geometric" as const,
+        intensity: "medium" as const,
         colorScheme: "primary" as const,
       }
     );

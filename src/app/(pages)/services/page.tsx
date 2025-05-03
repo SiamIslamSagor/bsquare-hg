@@ -15,7 +15,7 @@ import { slugify } from "@/lib/utils";
 
 const services = [
   {
-    title: "Web Development",
+    title: "Web Development.",
     description:
       "Custom websites and web applications built with cutting-edge technologies and best practices.",
     icon: <IoTerminalOutline className="w-6 h-6" />,
